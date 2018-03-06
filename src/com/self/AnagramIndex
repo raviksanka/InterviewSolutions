@@ -13,7 +13,7 @@ import java.util.Set;
 public class AnagramLst {
 
 	public static void main(String[] args) {
-    //System.out.println(getAnagramLst("abcd"));
+    	//System.out.println(getAnagramLst("abcd"));
 		System.out.println(getIndexOfAnagrams("rabdcbaj", getAnagramLst("abcd")));
 	}
 	
