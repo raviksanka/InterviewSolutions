@@ -1,0 +1,33 @@
+package com.self;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Org_Employee {
+
+	private final int id;
+	private final String name;
+	private final List<Org_Employee> reports;
+
+	public Org_Employee(int id, String name) {
+		this.id = id;
+		this.name = name;
+		this.reports = new ArrayList<Org_Employee>();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public List<Org_Employee> getReports() {
+		return reports;
+	}
+
+	public void addReport(Org_Employee employee) {
+		reports.add(employee);
+	}
+}
