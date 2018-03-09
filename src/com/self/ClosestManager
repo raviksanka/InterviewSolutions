@@ -1,0 +1,68 @@
+package com.self;
+
+import java.util.Stack;
+
+/*
+ * This file is used to get the closest common manager between 2 employees in org
+ */
+public class ClosestManager {
+
+	public static void main(String[] args) {
+		
+	}
+
+	public static Org_Employee closestCommonManager(Org_Employee ceo, Org_Employee employee1, Org_Employee employee2) {
+		
+		Stack<Org_Employee> firstPath = new Stack<Org_Employee>();
+		Stack<Org_Employee> secondPath = new Stack<Org_Employee>();
+
+		Org_Employee root = ceo;
+		//DepthFirstSearch
+		DFS(root, employee1, firstPath);
+		DFS(root, employee2, secondPath);
+
+		if (firstPath.peek().getId() == employee1.getId() && secondPath.peek().getId() == employee2.getId()) {
+			int size1 = firstPath.size();
+			int size2 = secondPath.size();
+			int diff = Math.abs(size2 - size1);
+			if (size1 > size2) {
+				moveUp(firstPath, diff);
+			} else {
+				moveUp(secondPath, diff);
+			}
+			while (firstPath.peek().getId() != secondPath.peek().getId()) {
+				firstPath.pop();
+				secondPath.pop();
+			}
+			if (firstPath.size() > 0) {
+				return firstPath.pop();
+			}
+		}
+		return null;
+	}
+
+	public static boolean DFS(Org_Employee root, Org_Employee target, Stack<Org_Employee> path) {
+		
+		path.push(root);
+		if (root.getId() == target.getId()) {
+			return true;
+		}
+		for (Org_Employee r : root.getReports()) {
+			boolean res = DFS(r, target, path);
+			if (res) {
+				return true;
+			}
+		}
+		path.pop();
+		return false;
+	}
+
+	public static void moveUp(Stack<Org_Employee> path, int diff) {
+		
+		while (diff > 0 && !path.isEmpty()) {
+			path.pop();
+			diff--;
+		}
+	}
+
+}
