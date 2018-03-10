@@ -10,10 +10,10 @@ import java.util.Set;
  * This is used to find the index(s) of a particular string in the 
  *      anagram list of the given string.
  */
-public class AnagramLst {
+public class AnagramIndex {
 
 	public static void main(String[] args) {
-    	//System.out.println(getAnagramLst("abcd"));
+    	//System.out.println(getAnagramLst("abcd")); - To get list of anagrams of a string
 		System.out.println(getIndexOfAnagrams("rabdcbaj", getAnagramLst("abcd")));
 	}
 	

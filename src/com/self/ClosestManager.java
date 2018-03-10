@@ -1,5 +1,7 @@
 package com.self;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 /*
@@ -8,18 +10,17 @@ import java.util.Stack;
 public class ClosestManager {
 
 	public static void main(String[] args) {
-		
+
 	}
 
-	public static Org_Employee closestCommonManager(Org_Employee ceo, Org_Employee employee1, Org_Employee employee2) {
+	private static Org_Employee closestCommonManager(Org_Employee ceo, Org_Employee employee1, Org_Employee employee2) {
 		
-		Stack<Org_Employee> firstPath = new Stack<Org_Employee>();
-		Stack<Org_Employee> secondPath = new Stack<Org_Employee>();
+		Stack<Org_Employee> firstPath = new Stack<>();
+		Stack<Org_Employee> secondPath = new Stack<>();
 
-		Org_Employee root = ceo;
 		//DepthFirstSearch
-		DFS(root, employee1, firstPath);
-		DFS(root, employee2, secondPath);
+		DFS(ceo, employee1, firstPath);
+		DFS(ceo, employee2, secondPath);
 
 		if (firstPath.peek().getId() == employee1.getId() && secondPath.peek().getId() == employee2.getId()) {
 			int size1 = firstPath.size();
@@ -41,7 +42,7 @@ public class ClosestManager {
 		return null;
 	}
 
-	public static boolean DFS(Org_Employee root, Org_Employee target, Stack<Org_Employee> path) {
+	private static boolean DFS(Org_Employee root, Org_Employee target, Stack<Org_Employee> path) {
 		
 		path.push(root);
 		if (root.getId() == target.getId()) {
@@ -57,12 +58,33 @@ public class ClosestManager {
 		return false;
 	}
 
-	public static void moveUp(Stack<Org_Employee> path, int diff) {
+	private static void moveUp(Stack<Org_Employee> path, int diff) {
 		
 		while (diff > 0 && !path.isEmpty()) {
 			path.pop();
 			diff--;
 		}
 	}
+
+    class Org_Employee {
+
+        private final int id;
+        private final String name;
+        private final List<Org_Employee> reports;
+
+        public Org_Employee(int id, String name) {
+            this.id = id;
+            this.name = name;
+            this.reports = new ArrayList<>();
+        }
+
+        private int getId() { return id; }
+
+        private String getName() { return name; }
+
+        private List<Org_Employee> getReports() { return reports; }
+
+        public void addReport(Org_Employee employee) { reports.add(employee); }
+    }
 
 }
