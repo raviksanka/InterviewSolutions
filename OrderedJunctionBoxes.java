@@ -1,4 +1,4 @@
-package test;
+package com.self;
 
 import java.util.*;
 import java.util.stream.Collectors;
