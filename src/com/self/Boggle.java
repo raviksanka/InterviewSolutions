@@ -27,6 +27,7 @@ public class Boggle {
      */
     // Alphabet size
     static final int SIZE = 26;
+    // Array size m and n
     static final int M = 3;
     static final int N = 3;
 
