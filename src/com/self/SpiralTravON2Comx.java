@@ -1,5 +1,5 @@
 /*
-    Level Order Spiral Tree Traversal using O(n*2) time complexity and  not using extra space.
+    Level Order Spiral Tree Traversal using O(n*2) time complexity and not using extra space.
         if no need of spiral, just remove usage of boolean ltr...
 */
 
