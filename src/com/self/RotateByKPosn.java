@@ -1,3 +1,5 @@
+package com.self;
+
 /*
 Write a Java program to rotate an array by K positions.
     If Arr[] = {1, 2, 3, 4, 5, 6} N=6 & K=2 then rotated array will be {5, 6, 1, 2, 3, 4}
@@ -29,6 +31,7 @@ public class RotateByKPosn {
     }
 
     public static void reverse(int[] arr, int left, int right) {
+        
         if(arr == null || arr.length == 1)
             return;
 
@@ -40,4 +43,5 @@ public class RotateByKPosn {
             right--;
         }
     }
+    
 }
